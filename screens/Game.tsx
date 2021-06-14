@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { View, Text, StyleSheet, Button, Alert } from "react-native";
 import NumberContainer from "../components/Number";
 import Card from "../components/Card";
@@ -22,8 +22,16 @@ const Game = (props: any) => {
   const [currentGuess, setCurrentGuess] = useState(
     generateRandomBetween(1, 100, props.userChoice)
   );
+
   const currentLow = useRef(1);
   const currentHigh = useRef(100);
+
+  useEffect(()=>{
+    if(currentGuess === props.userChoice){
+      
+    }
+  },[])
+
   const nextGuessHandler = (direction: any) => {
     if (
       (direction === "lower" && currentGuess < props.userChoice) ||

@@ -22,20 +22,22 @@ const Game = (props: any) => {
   const [currentGuess, setCurrentGuess] = useState(
     generateRandomBetween(1, 100, props.userChoice)
   );
-
+  const [rounds, setRounds] = useState(0);
   const currentLow = useRef(1);
   const currentHigh = useRef(100);
 
-  useEffect(()=>{
-    if(currentGuess === props.userChoice){
-      
-    }
-  },[])
+  const { userChoice, onGameOver } = props;
 
+  useEffect(() => {
+    if (currentGuess === userChoice) {
+      onGameOver(rounds);
+    }
+  }, [currentGuess,userChoice, onGameOver]);
+ 
   const nextGuessHandler = (direction: any) => {
     if (
-      (direction === "lower" && currentGuess < props.userChoice) ||
-      (direction === "greater" && currentGuess > props.userChoice)
+      (direction === "lower" && currentGuess < userChoice) ||
+      (direction === "greater" && currentGuess > userChoice)
     ) {
       Alert.alert("Don't lie!", "You know that is wrong...", [
         { text: "Sorry", style: "cancel" },
@@ -53,6 +55,7 @@ const Game = (props: any) => {
       currentGuess
     );
     setCurrentGuess(nextNumber);
+    setRounds((curRounds) => curRounds + 1);
   };
 
   return (

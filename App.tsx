@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import StartGameScreen from "./screens/StartGame";
 import GameScreen from "./screens/GameScreen";
 import GameOver from "./screens/GameOver";
+import * as Font from "expo-font";
 
 export default function App() {
   const [userNumber, setUserNumer] = useState<any>();

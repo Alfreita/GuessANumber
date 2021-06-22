@@ -8,7 +8,7 @@ import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
 
 const fetchFonts = async () => {
- return Font.loadAsync({
+ return Font.loadAsync({ 
     "open-sans-bold": require("./assets/fonts/OpenSans-Bold.ttf"),
     "open-sans": require("./assets/fonts/OpenSans-Regular.ttf"),
   });

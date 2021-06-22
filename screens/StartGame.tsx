@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -23,6 +23,19 @@ const StartGame = (props: any) => {
   const [enteredValue, setEnteredValue] = useState("");
   const [confirmed, setConfirmed] = useState(false);
   const [selectedNumber, setSelectedNuber] = useState(0);
+  const [buttonWidth, setButtonWidth] = useState(
+    Dimensions.get("window").width / 4
+  );
+
+  useEffect(() => {
+    const updateLayout = () => {
+      setButtonWidth(Dimensions.get("window").width / 4);
+    };
+    Dimensions.addEventListener("change", updateLayout);
+    return () =>{
+      Dimensions.removeEventListener("change", updateLayout);
+    }
+  });
 
   const numberInputHandler = (inputText: string) => {
     setEnteredValue(inputText.replace(/[^0-9]/g, ""));
@@ -64,7 +77,7 @@ const StartGame = (props: any) => {
   }
   return (
     <ScrollView>
-      <KeyboardAvoidingView behavior="position" keyboardVerticalOffset={30} >
+      <KeyboardAvoidingView behavior="position" keyboardVerticalOffset={30}>
         <TouchableWithoutFeedback
           onPress={() => {
             Keyboard.dismiss();
@@ -85,14 +98,14 @@ const StartGame = (props: any) => {
                 value={enteredValue}
               />
               <View style={styles.buttonContainer}>
-                <View style={styles.button}>
+                <View style={{ width: buttonWidth }}>
                   <Button
                     title="Reset"
                     color={Colors.secondary}
                     onPress={resetInputHandler}
                   />
                 </View>
-                <View style={styles.button}>
+                <View style={{ width: buttonWidth }}>
                   <Button
                     title="Confirm"
                     color={Colors.primary}
@@ -137,7 +150,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   button: {
-    width: Dimensions.get("window").width / 3,
+    width: Dimensions.get("window").width / 4,
   },
   summaryContainer: {
     marginTop: 20,

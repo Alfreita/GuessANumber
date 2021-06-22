@@ -53,7 +53,9 @@ const StartGame = (props: any) => {
       <Card style={styles.summaryContainer}>
         <Text>You selected</Text>
         <NumberContainer>{selectedNumber}</NumberContainer>
-        <MainButton onPress={() => props.onStartGame(selectedNumber)} >Start Game</MainButton>
+        <MainButton onPress={() => props.onStartGame(selectedNumber)}>
+          Start Game
+        </MainButton>
       </Card>
     );
   }
@@ -106,8 +108,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   inputContainer: {
-    width: 300,
-    maxWidth: "80%",
+    width: "80%",
+    // maxWidth: "80%",
+    maxWidth:'95%',
+    minWidth: 300,
     alignItems: "center",
   },
   title: {

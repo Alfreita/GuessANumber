@@ -132,7 +132,6 @@ const styles = StyleSheet.create({
   },
   button: {
     width: Dimensions.get("window").width / 3,
-    
   },
   summaryContainer: {
     marginTop: 20,

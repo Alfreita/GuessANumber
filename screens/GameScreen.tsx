@@ -14,6 +14,7 @@ import defaultStyles from "../constants/default-styles";
 import MainButton from "../components/MainButton";
 import { Ionicons } from "@expo/vector-icons";
 import BodyText from "../components/Bodytext";
+import * as ScreenOrientation from "expo-screen-orientation";
 
 const generateRandomBetween = (
   min: number,
@@ -38,6 +39,7 @@ const renderListItem = (listLength: any, itemData: any) => {
   );
 };
 const Game = (props: any) => {
+  ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT);
   const initialGuess = generateRandomBetween(1, 100, props.userChoice);
   const [currentGuess, setCurrentGuess] = useState(initialGuess);
   const [pastGuesses, setPastGuesses] = useState([initialGuess.toString()]);

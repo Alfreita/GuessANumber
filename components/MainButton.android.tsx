@@ -10,7 +10,8 @@ import {
 import colors from "../constants/colors";
 
 const MainButton = (props: any) => {
-  let ButtonComponent = TouchableOpacity;
+  let ButtonComponent: any = {};
+  ButtonComponent = TouchableOpacity;
   if (Platform.Version >= 21) {
     ButtonComponent = TouchableNativeFeedback;
   }
